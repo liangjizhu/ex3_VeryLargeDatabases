@@ -1,0 +1,30 @@
+services:
+  mongo:
+    image: mongo:7.0.1
+    container_name: a3-mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PWD}
+      MONGO_INITDB_DATABASE: ${APP_DB}
+    volumes:
+      - mongo-data:/data/db
+      - ./mongo/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./data:/datasets:ro
+
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: a3-app
+    depends_on:
+      - mongo
+    env_file: .env
+    volumes:
+      - ./app:/app
+      - ./data:/datasets:ro
+    command: ["python", "-u", "main.py"]
+
+volumes:
+  mongo-data:
