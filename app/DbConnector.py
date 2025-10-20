@@ -15,8 +15,8 @@ class DbConnector:
     def __init__(self,
                  DATABASE='movies_db',
                  HOST="mongo",
-                 USER="liang",
-                 PASSWORD="liang"):
+                 USER="jibm23",
+                 PASSWORD="nichinonibastardo"):
         uri = "mongodb://%s:%s@%s/%s" % (USER, PASSWORD, HOST, DATABASE)
         # Connect to the databases
         try:

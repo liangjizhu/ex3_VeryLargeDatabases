@@ -23,8 +23,11 @@ services:
     env_file: .env
     volumes:
       - ./app:/app
-      - ./data:/datasets:ro
+      - ./data:/app/data         
+      - ./data_cleaned:/app/data_clean
     command: ["python", "-u", "main.py"]
+    ports:
+      - "8888:8888"
 
 volumes:
   mongo-data:
