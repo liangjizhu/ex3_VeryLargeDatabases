@@ -49,7 +49,6 @@ app/_preview/
 
 
 .env*
-.env.jibm
 data/
 data_clean/
 data_cleaned/
