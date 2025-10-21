@@ -23,9 +23,9 @@ services:
     env_file: .env
     volumes:
       - ./app:/app
-      - ./data:/app/data         
-      - ./data_cleaned:/app/data_clean
-    command: ["python", "-u", "main.py"]
+      - ./data:/app/data
+      - ./data_clean:/app/data_clean
+    command: ["sleep", "infinity"]    # <— mantiene el contenedor vivo SIEMPRE
     ports:
       - "8888:8888"
 
