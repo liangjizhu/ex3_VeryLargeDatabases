@@ -25,7 +25,9 @@ services:
       - ./app:/app
       - ./data:/app/data
       - ./data_clean:/app/data_clean
-    command: ["sleep", "infinity"]    # <— mantiene el contenedor vivo SIEMPRE
+      - ./app/data:/app/data:rw
+      - ./app/data_clean:/app/data_clean:rw
+    command: ["sleep", "infinity"] # <— mantiene el contenedor vivo SIEMPRE
     ports:
       - "8888:8888"
 
